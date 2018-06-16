@@ -1,0 +1,8 @@
+<% msg_class_map = Hash.new.merge(notice: "success", success: "success", alert: "danger",
+  error: "danger", info: "info", warning: "warning", danger: "danger") %>
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= msg_class_map[message_type.to_sym] %>">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <%= content_tag :div, message, id: "flash-#{msg_class_map[message_type.to_sym]}" %>
+  </div>
+<% end %>

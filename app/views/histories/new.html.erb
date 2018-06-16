@@ -1,0 +1,26 @@
+<div class="row" style="margin-top: 30px;">
+  <%= link_to "View your histories", histories_path, class: "btn btn-default" %>
+</div>
+
+<div class="col-md-6" style="margin-top: 30px;">
+  <b>Your Balance: <%= current_user.balance %></b>
+  <%= form_for @history do |f| %>
+    <div class="form-group">
+      <%= f.label :exchange_value, "Exchange value" %>
+      <%= f.number_field :exchange_value, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :friend_id, "Receiver" %>
+      <%= f.collection_select :friend_id, User.without_user(current_user.id),
+        :id, :email, {}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :content, "Content" %>
+      <%= f.text_field :content, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Submit", class: "btn btn-success" %>
+  <% end %>
+</div>

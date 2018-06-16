@@ -1,0 +1,30 @@
+<div style="margin-top: 50px;">
+  <div class="row" style="margin-bottom: 30px;">
+    <%= link_to "Back to index", root_path, class: "btn btn-default" %>
+    <%= link_to "Create an exchange", new_history_path, class: "btn btn-primary" %>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Exchange</th>
+        <th>Receiver / Sender</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @histories.each do |history| %>
+        <% presenter(history) do |p| %>
+          <tr>
+            <td><%= p.created_at %></td>
+            <td><%= p.exchange %></td>
+            <td><%= p.interactive_people %></td>
+            <td><%= p.content %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

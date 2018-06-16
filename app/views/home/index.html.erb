@@ -1,3 +1,7 @@
 <div class="row" style="margin-top: 100px;">
   Your Balance: <%= current_user.balance %>
 </div>
+<div class="row" style="margin-top: 30px;">
+  <%= link_to "View your histories", histories_path, class: "btn btn-default" %>
+  <%= link_to "Create an exchange", new_history_path, class: "btn btn-primary" %>
+</div>
